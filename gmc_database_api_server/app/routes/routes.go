@@ -74,6 +74,10 @@ func GEdgeRoute(e *echo.Echo) {
 	r.PUT("/workspaces/:name", api.UpdateWorkspace)
 	r.DELETE("/workspaces/:name", api.DeleteWorkspace)
 
+	r.GET("/account", api.GetAccount)
+	r.POST("/account", api.CreateAccount)
+	r.Any("/account/test", api.ClusterTest)
+
 	// r.GET("/jobs", api.GetAllJobs)
 	// r.POST("/jobs", api.CreateJobs)
 	r.GET("/jobs/:name", api.GetJobs)

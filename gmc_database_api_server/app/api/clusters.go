@@ -156,3 +156,18 @@ func FindClusterDB(db *gorm.DB, select_val string, search_val string) *model.Clu
 	}
 	return &models
 }
+
+func FindClusterTokenDB(db *gorm.DB, select_val string, search_val string) *model.ClusterToken {
+	models := model.ClusterToken{}
+
+	if check := strings.Compare(search_val, "") == 0; check {
+		return nil
+	}
+
+	if strings.Compare(select_val, "Name") == 0 {
+		if err := db.First(&models, model.ClusterToken{Name: search_val}).Error; err != nil {
+			return nil
+		}
+	}
+	return &models
+}

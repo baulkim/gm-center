@@ -73,3 +73,12 @@ func (Cluster) TableName() string {
 }
 
 // type Clusters []Cluster
+type ClusterToken struct {
+	Name     string `gorm:"column:clusterName; not null" json:"clusterName"`
+	Endpoint string `gorm:"column:clusterEndpoint; not null" json:"clusterEndpoint"`
+	Token    string `gorm:"column:token; not null" json:"token"`
+}
+
+func (ClusterToken) TableName() string {
+	return "CLUSTER_INFO"
+}
